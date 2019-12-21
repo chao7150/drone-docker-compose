@@ -36,3 +36,4 @@ networks:
   common_link:
     external: true
   drone_link:
+    internal: true
