@@ -8,16 +8,13 @@ services:
     env_file: .env
     networks:
       - common_link
-      - drone_link
   runner_docker:
     image: drone/drone-runner-docker:latest
     container_name: drone_runner_docker
     restart: always
     env_file: .env
-    networks:
-      - drone_link
     ports:
-      - "3000:3000"
+      - "3001:3000"
     depends_on:
       - server
   runner_ssh:
@@ -25,15 +22,11 @@ services:
     container_name: drone_runner_ssh
     restart: always
     env_file: .env
-    networks:
-      - drone_link
     ports:
-      - "3000:3000"
+      - "3002:3000"
     depends_on:
       - server
 
 networks:
   common_link:
     external: true
-  drone_link:
-    internal: true
