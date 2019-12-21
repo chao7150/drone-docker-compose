@@ -7,6 +7,7 @@ services:
       container_name: drone_server
       restart: always
       env_file: .env
+      networks: common_link
     runner_docker:
       image: drone/drone-runner-docker:latest
       container_name: drone_runner_docker
@@ -21,3 +22,7 @@ services:
       env_file: .env
       ports: "3000:3000"
       depends_on: server
+
+networks:
+  common_link:
+    external: true
